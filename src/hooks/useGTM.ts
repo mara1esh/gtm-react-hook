@@ -5,24 +5,34 @@ import { DEFAULT_DATALAYER_NAME } from "@/utils/consts";
 import type { GTMConstructor } from "@/typings/typedefs";
 
 const useGTM = () => {
-  const dataLayerName = useRef<string>(DEFAULT_DATALAYER_NAME);
+  const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);
 
-  const initialize = useCallback((args: GTMConstructor) => {
-    createTags(args);
+  const initialize = useCallback(
+    ({
+      tagId,
+      dataLayerName,
+      domain,
+      environment,
+      nonce,
+      script,
+    }: GTMConstructor) => {
+      createTags({ tagId, dataLayerName, domain, environment, nonce, script });
 
-    if (typeof args.dataLayerName === "string") {
-      dataLayerName.current = args.dataLayerName;
-    }
-  }, []);
+      if (typeof dataLayerName === "string") {
+        dataLayerRef.current = dataLayerName;
+      }
+    },
+    []
+  );
 
   const event = useCallback((eventName: string, data?: object) => {
-    if (dataLayerName.current in window) {
+    if (dataLayerRef.current in window) {
       const dataLayer = {
         event: eventName,
         ...data,
       };
 
-      window[dataLayerName.current as keyof Window].push(dataLayer);
+      window[dataLayerRef.current as keyof Window].push(dataLayer);
     } else {
       console.warn("GTM is not initialized! Please, check its initialization");
     }
@@ -30,10 +40,10 @@ const useGTM = () => {
 
   return useMemo(
     () => ({
-      event,
       initialize,
+      event,
     }),
-    [event, initialize]
+    [initialize, event]
   );
 };
 

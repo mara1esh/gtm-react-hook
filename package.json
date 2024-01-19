@@ -1,5 +1,6 @@
 {
     "name": "gtm-react-hook",
+    "description": "Easy-used React hooks for Google Tag Management based on TypeScript",
     "version": "0.0.0",
     "scripts": {
         "start": "webpack serve --open",
@@ -38,5 +39,14 @@
         "name": "Valerii Shelihan",
         "email": "valerasheligan@gmail.com",
         "url": "https://github.com/mara1esh"
-    }
+    },
+    "keywords": [
+        "react",
+        "hooks",
+        "analytics",
+        "gtm",
+        "google tag manager",
+        "typescript",
+        "tracking"
+    ]
 }

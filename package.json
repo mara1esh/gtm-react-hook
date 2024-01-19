@@ -5,7 +5,8 @@
     "version": "0.0.0",
     "scripts": {
         "start": "webpack serve --open",
-        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "release": "pnpm run build && changeset publish",
+        "build": "tsup",
         "lint": "tsc"
     },
     "dependencies": {

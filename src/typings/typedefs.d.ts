@@ -1,12 +1,3 @@
-export type PageViewArguments = {
-  path: string;
-  name?: string;
-  options?: Partial<{
-    customDataLayer: string;
-    [key: string]: unknown;
-  }>;
-};
-
 export type GTMConstructor = {
   tagId: string;
   dataLayerName?: string;

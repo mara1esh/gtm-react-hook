@@ -6,6 +6,7 @@ import type { GTMConstructor } from "@/typings/typedefs";
 
 const useGTM = () => {
   const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);
+  const devModeRef = useRef<boolean>(false);
 
   const initialize = useCallback(
     ({
@@ -15,8 +16,21 @@ const useGTM = () => {
       environment,
       nonce,
       script,
+      devMode,
     }: GTMConstructor) => {
-      createTags({ tagId, dataLayerName, domain, environment, nonce, script });
+      if (devMode) {
+        devModeRef.current = true;
+      }
+
+      createTags({
+        tagId,
+        dataLayerName,
+        domain,
+        environment,
+        nonce,
+        script,
+        devMode,
+      });
 
       if (typeof dataLayerName === "string") {
         dataLayerRef.current = dataLayerName;
@@ -33,8 +47,14 @@ const useGTM = () => {
       };
 
       window[dataLayerRef.current as keyof Window].push(dataLayer);
+
+      if (devModeRef) {
+        console.info("🔵 [gtm-react-hook] Event has sent! Payload:", dataLayer);
+      }
     } else {
-      console.warn("GTM is not initialized! Please, check its initialization");
+      console.warn(
+        "🔴 [gtm-react-hook] Event didn't send! GTM is not initialized! Please, check its initialization"
+      );
     }
   }, []);
 

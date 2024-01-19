@@ -5,6 +5,7 @@ export type GTMConstructor = {
   domain?: string;
   script?: string;
   nonce?: string;
+  devMode?: boolean;
 };
 
 export type GTMEnvironment = {

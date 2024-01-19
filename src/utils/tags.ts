@@ -20,6 +20,12 @@ const getEnvironmentString = (
   }
 };
 
+const logEvent = (tag: "script" | "noscript") => {
+  const [_tag, element] =
+    tag === "script" ? ["Script", "header"] : ["Noscript", "body"];
+  console.info(`🟢 [gtm-react-hook] GTM ${_tag} was added to ${element}`);
+};
+
 export const createTags = (args: GTMConstructor) => {
   const {
     tagId,
@@ -28,6 +34,7 @@ export const createTags = (args: GTMConstructor) => {
     dataLayerName = DEFAULT_DATALAYER_NAME,
     nonce,
     environment,
+    devMode,
   } = args;
   const scriptTag = document.createElement("script");
   if (nonce) {
@@ -45,6 +52,10 @@ export const createTags = (args: GTMConstructor) => {
     document.head.appendChild(scriptTag);
   }
 
+  if (devMode) {
+    logEvent("script");
+  }
+
   const noScriptTag = document.createElement("noscript");
   const iframeEnv = getEnvironmentString(environment, "noscript");
   noScriptTag.innerHTML = `<iframe
@@ -57,5 +68,9 @@ export const createTags = (args: GTMConstructor) => {
     document.body.insertBefore(noScriptTag, document.body.childNodes[0]);
   } else {
     document.body.appendChild(noScriptTag);
+  }
+
+  if (devMode) {
+    logEvent("noscript");
   }
 };

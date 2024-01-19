@@ -1,6 +1,6 @@
-# Easy-used React hooks for Google Tag Management based on TypeScript
+# 📊 Easy-to-use React hooks for Google Tag Management based on TypeScript
 
-## Features
+## 🔥 Features 
 
  - Zero dependencies
  - Fully typed with TypeScript
@@ -8,41 +8,45 @@
  - Support tools for custom GTM configutation
  - Small bundle size
  
-## Install
+## 🛠 Install
 
-    npm install gtm-react-hook
+    ```shell
+	npm install gtm-react-hook
+	```
 
 or
 
+	```shell
     yarn add gtm-react-hook
+	```
 
-## Quickstart
+## 🚀 Quickstart
 
 ```typescript
-    import  React, { FC, useEffect } from  "react";
-	import { useGTM } from  "gtm-react-hook";
-	import { useLocation } from  "react-router-dom";
+    	import  React, { FC, useEffect } from "react";
+	import { useGTM } from "gtm-react-hook";
+	import { useLocation } from "react-router-dom";
 
-	const  App: FC = () => {
+	const App = () => {
 	  const { initialize, event } = useGTM();
-	  const  location = useLocation();
+	  const location = useLocation();
 
 	  useEffect(() => {
 		initialize({
-			tagId: "GTM-XXXXXXX", // Provide your Tag ID
+		  tagId: "GTM-XXXXXXX", // Provide your Tag ID
 		});
 	  }, []);
 
 	  useEffect(() => {
 		event("page_view", {
-			pathname: location.pathname,
+		  pathname: location.pathname,
 		});
 	  }, [location.pathname]);
 	
 	  return  <>...</>;
 	};
 ```
-## API
+## 🧙🏻‍♂️ API
 
 ### useGTM()
 
@@ -50,18 +54,18 @@ or
     const { initialize, event } = useGTM();
 ```
 
-#### initialize
+#### initialize({ tagId, dataLayerName?, environment?, domain?, script?, nonce? })
 ##### Arguments
 
- 1. **tagId** (required) - your GTM measurement ID;
- 2. dataLayerName - custom name of dataLayer object;
- 3. environment - GTM enviroment params;
- 4.  domain - custom GTM domain;
- 5. script - custom GTM script's name;
- 6. nonce;
+ 1. **tagId**: string (required) - your GTM measurement ID;
+ 2. dataLayerName: object - custom name of dataLayer object;
+ 3. environment: { gtm_auth: string, gtm_preview: string } - GTM enviroment params;
+ 4. domain: string - custom GTM domain;
+ 5. script: string - custom GTM script's name;
+ 6. nonce: string;
 
-#### event
+#### event(eventName, data?)
 ##### Arguments
 
- 1. **eventName** (required) - name of an event;
- 2. data - payload of dataLayer;
+ 1. **eventName**: string (required) - name of an event;
+ 2. data: object - payload of dataLayer (action, url, customerID, etc);

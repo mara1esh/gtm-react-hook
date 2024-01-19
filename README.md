@@ -46,9 +46,9 @@ or
 
 ### useGTM()
 
-    ```typescript 
+```typescript 
     const { initialize, event } = useGTM();
-    ```
+```
 
 #### initialize
 ##### Arguments

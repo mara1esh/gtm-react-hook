@@ -1,5 +1,6 @@
 {
     "name": "gtm-react-hook",
+    "private": "false",
     "description": "Easy-used React hooks for Google Tag Management based on TypeScript",
     "version": "0.0.0",
     "scripts": {
@@ -40,6 +41,11 @@
         "email": "valerasheligan@gmail.com",
         "url": "https://github.com/mara1esh"
     },
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/mara1esh/gtm-react-hook"
+    },
+    "homepage": "https://github.com/mara1esh/gtm-react-hook#readme",
     "keywords": [
         "react",
         "hooks",

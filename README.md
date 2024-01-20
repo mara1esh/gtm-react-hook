@@ -10,9 +10,9 @@
  - Small bundle size
  
 ## 🛠 Install
-    `npm install gtm-react-hook`
+    npm install gtm-react-hook
 	or
-	`yarn add gtm-react-hook`
+	yarn add gtm-react-hook
 
 ## 🚀 Quickstart
 

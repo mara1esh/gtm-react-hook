@@ -10,16 +10,9 @@
  - Small bundle size
  
 ## 🛠 Install
-
-    ```shell
-		npm install gtm-react-hook
-	```
-
-or
-
-	```shell
-    	yarn add gtm-react-hook
-	```
+    ```npm install gtm-react-hook```
+	or
+	```yarn add gtm-react-hook```
 
 ## 🚀 Quickstart
 
@@ -120,10 +113,23 @@ or
 	const { runGTM } = useGTM();
 
 	useEffect(() => {
-		if (isUserConfirmAnalytics) {
-		  runGTM({
-		    gtmId: "GTM-XXXXXXX",
-		  });
-		}
+	  if (isUserConfirmAnalytics) {
+	    runGTM({
+		  gtmId: "GTM-XXXXXXX",
+		});
+	  }
 	}, [isUserConfirmAnalytics]);
+```
+
+### Logging
+
+```typescript
+	const { runGTM } = useGTM();
+
+	useEffect(() => {
+	  runGTM({
+	    gtmId: "GTM-XXXXXXX",
+		devMode: true // add GTM logs to browser's console 
+	  });
+	}, []);
 ```

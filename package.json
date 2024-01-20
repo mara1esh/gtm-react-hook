@@ -1,6 +1,5 @@
 {
     "name": "gtm-react-hook",
-    "private": "false",
     "description": "Easy-used React hooks for Google Tag Management based on TypeScript",
     "version": "0.0.0",
     "scripts": {

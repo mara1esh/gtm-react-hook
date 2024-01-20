@@ -29,17 +29,17 @@ or
 	import { useLocation } from "react-router-dom";
 
 	const App = () => {
-	  const { initialize, event } = useGTM();
+	  const { runGTM, eventGTM } = useGTM();
 	  const location = useLocation();
 
 	  useEffect(() => {
-		initialize({
+		runGTM({
 		  tagId: "GTM-XXXXXXX", // Provide your Tag ID
 		});
 	  }, []);
 
 	  useEffect(() => {
-		event("page_view", {
+		eventGTM("page_view", {
 		  pathname: location.pathname,
 		});
 	  }, [location.pathname]);
@@ -52,10 +52,10 @@ or
 ### useGTM()
 
 ```typescript 
-    const { initialize, event } = useGTM();
+    const { runGTM, eventGTM } = useGTM();
 ```
 
-#### initialize({ tagId: string, dataLayerName?: object, environment?: { gtm_auth: string, gtm_preview: string }, domain?: string, script?: string, nonce?: string, devMode?: boolean })
+#### runGTM({ tagId: string, dataLayerName?: object, environment?: { gtm_auth: string, gtm_preview: string }, domain?: string, script?: string, nonce?: string, devMode?: boolean })
 
  1. **tagId** (required) - your GTM measurement ID;
  2. dataLayerName - custom name of dataLayer object;
@@ -65,7 +65,7 @@ or
  6. nonce;
  7. devMode - add logging for GTM initialization & events;
 
-#### event(eventName: string, data?: object)
+#### eventGTM(eventName: string, data?: object)
 
  1. **eventName** (required) - name of an event;
  2. data - payload of dataLayer (action, url, customerID, etc);
@@ -76,24 +76,24 @@ or
 ### Page tracking
 
 ```typescript
-	const { event } = useGTM();
+	const { eventGTM } = useGTM();
 	const location = useLocation();
 
 	useEffect(() => {
-		event("page_view", { location: location.pathname });
+	  eventGTM("page_view", { location: location.pathname });
 	}, [location]);
 ```
 
 ### Track event
 
 ```typescript
-	const { event } = useGTM();
+	const { eventGTM } = useGTM();
 
 	const handleSaveCustomerInfo = (customer) => {
-		event("customer_info", { 
-			customerId: customer.customerId, 
-			customerRegion: customer.customerRegion 
-		});
+	  eventGTM("customer_info", { 
+		customerId: customer.customerId, 
+		customerRegion: customer.customerRegion 
+	  });
 	}
 	
 	...JSX...
@@ -104,27 +104,26 @@ or
 ### Custom data layer name
 
 ```typescript
-	const { initialize } = useGTM();
+	const { runGTM } = useGTM();
 
 	useEffect(() => {
-		initialize({
-			gtmId: "GTM-XXXXXXX",
-			dataLayerName: "myGTMLayer", // all GTM events will be stored in `window.myGTMLayer` key
-		})
+	  runGTM({
+	    gtmId: "GTM-XXXXXXX",
+		dataLayerName: "myGTMLayer", // all GTM events will be stored in `window.myGTMLayer` key
+	  });
 	}, []);
 ```
 
 ### Installation only after user has accepted analytics
 
 ```typescript
-	const { initialize } = useGTM();
+	const { runGTM } = useGTM();
 
 	useEffect(() => {
 		if (isUserConfirmAnalytics) {
-			initialize({
-				gtmId: "GTM-XXXXXXX",
-				dataLayerName: "myGTMLayer", // all GTM events will be stored in `window.myGTMLayer` key
-			})
+		  runGTM({
+		    gtmId: "GTM-XXXXXXX",
+		  });
 		}
 	}, [isUserConfirmAnalytics]);
 ```

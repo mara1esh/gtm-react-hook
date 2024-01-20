@@ -8,7 +8,7 @@ const useGTM = () => {
   const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);
   const devModeRef = useRef<boolean>(false);
 
-  const initialize = useCallback(
+  const runGTM = useCallback(
     ({
       tagId,
       dataLayerName,
@@ -39,7 +39,7 @@ const useGTM = () => {
     []
   );
 
-  const event = useCallback((eventName: string, data?: object) => {
+  const eventGTM = useCallback((eventName: string, data?: object) => {
     if (dataLayerRef.current in window) {
       const dataLayer = {
         event: eventName,
@@ -60,10 +60,10 @@ const useGTM = () => {
 
   return useMemo(
     () => ({
-      initialize,
-      event,
+      runGTM,
+      eventGTM,
     }),
-    [initialize, event]
+    [runGTM, eventGTM]
   );
 };
 

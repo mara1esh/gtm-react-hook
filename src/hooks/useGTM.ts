@@ -48,7 +48,7 @@ const useGTM = () => {
 
       window[dataLayerRef.current as keyof Window].push(dataLayer);
 
-      if (devModeRef) {
+      if (devModeRef.current) {
         console.info("🔵 [gtm-react-hook] Event has sent! Payload:", dataLayer);
       }
     } else {

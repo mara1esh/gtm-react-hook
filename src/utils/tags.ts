@@ -59,7 +59,7 @@ export const createTags = (args: GTMConstructor) => {
   const noScriptTag = document.createElement("noscript");
   const iframeEnv = getEnvironmentString(environment, "noscript");
   noScriptTag.innerHTML = `<iframe
-                  src="https://${domain}/ns.html?id=${tagId}${iframeEnv}"
+                  src="${domain}/ns.html?id=${tagId}${iframeEnv}"
                   height="0"
                   width="0"
                   style="display:none;visibility:hidden"

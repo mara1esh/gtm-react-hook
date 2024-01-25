@@ -8,6 +8,7 @@
  - Support tools for custom GTM configuration
  - Logging events
  - Small bundle size
+ - Test covered
  
 ## 🛠 Install
     npm install gtm-react-hook
@@ -45,7 +46,7 @@
 ### useGTM()
 
 ```typescript 
-    const { runGTM, eventGTM, uninstallGTM } = useGTM();
+    const { runGTM, eventGTM } = useGTM();
 ```
 
 #### runGTM({ tagId: string, dataLayerName?: object, environment?: { gtm_auth: string, gtm_preview: string }, domain?: string, script?: string, nonce?: string, devMode?: boolean })

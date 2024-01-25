@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "testEnvironment": "jest-environment-jsdom",
+  "collectCoverage": true,
+  "modulePaths": [
+    "<rootDir>/src"
+  ],
+  "roots": [
+    "src"
+  ]
+}

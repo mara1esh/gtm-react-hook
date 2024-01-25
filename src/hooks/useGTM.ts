@@ -54,7 +54,7 @@ const useGTM = () => {
     }
   }, []);
 
-  const uninstall = useCallback(() => {
+  const uninstallGTM = useCallback(() => {
     removeTags();
     delete window[dataLayerRef.current as keyof Window];
   }, []);
@@ -63,9 +63,9 @@ const useGTM = () => {
     () => ({
       runGTM,
       eventGTM,
-      uninstall,
+      uninstallGTM,
     }),
-    [runGTM, eventGTM, uninstall]
+    [runGTM, eventGTM, uninstallGTM]
   );
 };
 

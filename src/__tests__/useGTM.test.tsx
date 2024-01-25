@@ -29,7 +29,7 @@ describe("useGTM basic init", () => {
     expect(noScriptTag.textContent).toContain(`id=${GTM_ID}`);
   });
 
-  result.current.uninstall();
+  result.current.uninstallGTM();
 });
 
 describe("useGTM extended init", () => {

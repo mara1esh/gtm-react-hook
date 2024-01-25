@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useRef } from "react";
 
-import { createTags } from "@/utils/tags";
-import { DEFAULT_DATALAYER_NAME } from "@/utils/consts";
-import type { GTMConstructor } from "@/typings/typedefs";
+import { createTags, removeTags } from "../utils/tags";
+import { DEFAULT_DATALAYER_NAME } from "../utils/consts";
+import type { GTMConstructor } from "../typings/typedefs";
 
 const useGTM = () => {
   const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);
@@ -51,19 +51,21 @@ const useGTM = () => {
       if (devModeRef.current) {
         console.info("🔵 [gtm-react-hook] Event has sent! Payload:", dataLayer);
       }
-    } else {
-      console.warn(
-        "🔴 [gtm-react-hook] Event didn't send! GTM is not initialized! Please, check its initialization"
-      );
     }
+  }, []);
+
+  const uninstall = useCallback(() => {
+    removeTags();
+    delete window[dataLayerRef.current as keyof Window];
   }, []);
 
   return useMemo(
     () => ({
       runGTM,
       eventGTM,
+      uninstall,
     }),
-    [runGTM, eventGTM]
+    [runGTM, eventGTM, uninstall]
   );
 };
 

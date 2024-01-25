@@ -45,7 +45,7 @@
 ### useGTM()
 
 ```typescript 
-    const { runGTM, eventGTM } = useGTM();
+    const { runGTM, eventGTM, uninstallGTM } = useGTM();
 ```
 
 #### runGTM({ tagId: string, dataLayerName?: object, environment?: { gtm_auth: string, gtm_preview: string }, domain?: string, script?: string, nonce?: string, devMode?: boolean })
@@ -63,6 +63,8 @@
  1. **eventName** (required) - name of an event;
  2. data - payload of dataLayer (action, url, customerID, etc);
 
+
+ #### uninstallGTM()
 
 ## 💅🏽 Examples
 

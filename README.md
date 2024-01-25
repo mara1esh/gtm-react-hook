@@ -64,8 +64,6 @@
  2. data - payload of dataLayer (action, url, customerID, etc);
 
 
- #### uninstallGTM()
-
 ## 💅🏽 Examples
 
 ### Page tracking

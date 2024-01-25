@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef } from "react";
 
-import { createTags, removeTags } from "../utils/tags";
+import { createTags } from "../utils/tags";
 import { DEFAULT_DATALAYER_NAME } from "../utils/consts";
 import type { GTMConstructor } from "../typings/typedefs";
 
@@ -54,18 +54,12 @@ const useGTM = () => {
     }
   }, []);
 
-  const uninstallGTM = useCallback(() => {
-    removeTags();
-    delete window[dataLayerRef.current as keyof Window];
-  }, []);
-
   return useMemo(
     () => ({
       runGTM,
       eventGTM,
-      uninstallGTM,
     }),
-    [runGTM, eventGTM, uninstallGTM]
+    [runGTM, eventGTM]
   );
 };
 

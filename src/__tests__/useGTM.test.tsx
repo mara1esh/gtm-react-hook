@@ -1,6 +1,7 @@
 import { screen, renderHook, act, waitFor } from "@testing-library/react";
 
 import { useGTM } from "../hooks/useGTM";
+import { removeTags } from "../utils/tags";
 
 const GTM_ID = "GTM-XXXXXXX";
 const DOMAIN = "https://www.mock-domain.com/";
@@ -29,7 +30,8 @@ describe("useGTM basic init", () => {
     expect(noScriptTag.textContent).toContain(`id=${GTM_ID}`);
   });
 
-  result.current.uninstallGTM();
+  removeTags();
+  delete window["dataLayer" as keyof Window];
 });
 
 describe("useGTM extended init", () => {

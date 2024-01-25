@@ -1,9 +1,11 @@
-import type { GTMConstructor, GTMEnvironment } from "@/typings/typedefs";
+import type { GTMConstructor, GTMEnvironment } from "../typings/typedefs";
 
 import {
   DEFAULT_DATALAYER_NAME,
   DEFAULT_DOMAIN,
   DEFAULT_SCRIPT,
+  SCRIPT_ID,
+  NOSCRIPT_ID,
 } from "./consts";
 
 const getEnvironmentString = (
@@ -37,6 +39,9 @@ export const createTags = (args: GTMConstructor) => {
     devMode,
   } = args;
   const scriptTag = document.createElement("script");
+  scriptTag.id = SCRIPT_ID;
+  scriptTag.setAttribute("data-testid", SCRIPT_ID);
+
   if (nonce) {
     scriptTag.setAttribute("nonce", nonce);
   }
@@ -46,17 +51,15 @@ export const createTags = (args: GTMConstructor) => {
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     '${domain}/${script}?id='+i+dl${scriptEnv};f.parentNode.insertBefore(j,f);
     })(window,document,'script','${dataLayerName}','${tagId}');`;
-  if (document.head.childNodes[0]) {
-    document.head.insertBefore(scriptTag, document.head.childNodes[0]);
-  } else {
-    document.head.appendChild(scriptTag);
-  }
+  document.head.insertBefore(scriptTag, document.head.childNodes[0]!);
 
   if (devMode) {
     logEvent("script");
   }
 
   const noScriptTag = document.createElement("noscript");
+  noScriptTag.id = NOSCRIPT_ID;
+  noScriptTag.setAttribute("data-testid", NOSCRIPT_ID);
   const iframeEnv = getEnvironmentString(environment, "noscript");
   noScriptTag.innerHTML = `<iframe
                   src="${domain}/ns.html?id=${tagId}${iframeEnv}"
@@ -64,13 +67,20 @@ export const createTags = (args: GTMConstructor) => {
                   width="0"
                   style="display:none;visibility:hidden"
                   />`;
-  if (document.body.childNodes[0]) {
-    document.body.insertBefore(noScriptTag, document.body.childNodes[0]);
-  } else {
-    document.body.appendChild(noScriptTag);
-  }
+
+  document.body.insertBefore(noScriptTag, document.body.childNodes[0]!);
 
   if (devMode) {
     logEvent("noscript");
+  }
+};
+
+export const removeTags = () => {
+  const scriptTag = document.getElementById(SCRIPT_ID);
+  const noScriptTag = document.getElementById(NOSCRIPT_ID);
+
+  if (scriptTag && noScriptTag) {
+    document.head.removeChild(scriptTag);
+    document.body.removeChild(noScriptTag);
   }
 };

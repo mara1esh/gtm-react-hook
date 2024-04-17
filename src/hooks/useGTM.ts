@@ -1,4 +1,4 @@
-import { useRef, useMemo, useCallback } from 'react';
+import { useRef, useMemo, useCallback } from "react";
 import { createTags } from "../utils/tags";
 import { DEFAULT_DATALAYER_NAME } from "../utils/consts";
 import type { GTMConstructor } from "../typings/typedefs";

@@ -2,12 +2,12 @@
 
 ## 🔥 Features
 
-- Zero dependencies
-- Fully typed with TypeScript
 - Based on React hooks
+- Fully typed with TypeScript
+- Small bundle size <4k
 - Support tools for custom GTM configuration
+- Zero dependencies
 - Logging events
-- Small bundle size
 - Test covered
 
 ## 🛠 Install

@@ -1,14 +1,13 @@
-import { useCallback, useMemo, useRef } from "react";
-
+import React from 'react';
 import { createTags } from "../utils/tags";
 import { DEFAULT_DATALAYER_NAME } from "../utils/consts";
 import type { GTMConstructor } from "../typings/typedefs";
 
 const useGTM = () => {
-  const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);
-  const devModeRef = useRef<boolean>(false);
+  const dataLayerRef = React.useRef<string>(DEFAULT_DATALAYER_NAME);
+  const devModeRef = React.useRef<boolean>(false);
 
-  const runGTM = useCallback(
+  const runGTM = React.useCallback(
     ({
       tagId,
       dataLayerName,
@@ -39,7 +38,7 @@ const useGTM = () => {
     []
   );
 
-  const eventGTM = useCallback((eventName: string, data?: object) => {
+  const eventGTM = React.useCallback((eventName: string, data?: object) => {
     if (dataLayerRef.current in window) {
       const dataLayer = {
         event: eventName,
@@ -54,7 +53,7 @@ const useGTM = () => {
     }
   }, []);
 
-  return useMemo(
+  return React.useMemo(
     () => ({
       runGTM,
       eventGTM,

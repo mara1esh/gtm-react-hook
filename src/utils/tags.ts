@@ -1,4 +1,4 @@
-import type { GTMConstructor, GTMEnvironment } from "../typings/typedefs";
+import type { GTMConstructor, GTMEnvironment } from "@/typings/typedefs";
 
 import {
   DEFAULT_DATALAYER_NAME,

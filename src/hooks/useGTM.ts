@@ -1,7 +1,7 @@
 import { useRef, useMemo, useCallback } from "react";
-import { createTags } from "../utils/tags";
-import { DEFAULT_DATALAYER_NAME } from "../utils/consts";
-import type { GTMConstructor } from "../typings/typedefs";
+import { createTags } from "@/utils/tags";
+import { DEFAULT_DATALAYER_NAME } from "@/utils/consts";
+import type { GTMConstructor } from "@/typings/typedefs";
 
 const useGTM = () => {
   const dataLayerRef = useRef<string>(DEFAULT_DATALAYER_NAME);

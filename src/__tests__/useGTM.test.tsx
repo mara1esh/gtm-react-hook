@@ -1,7 +1,7 @@
 import { screen, renderHook, act, waitFor } from "@testing-library/react";
 
-import { useGTM } from "../hooks/useGTM";
-import { removeTags } from "../utils/tags";
+import { useGTM } from "@/hooks/useGTM";
+import { removeTags } from "@/utils/tags";
 
 const GTM_ID = "GTM-XXXXXXX";
 const DOMAIN = "https://www.mock-domain.com/";

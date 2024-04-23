@@ -4,7 +4,7 @@
 
 - Based on React hooks
 - Fully typed with TypeScript
-- Small bundle size <4kB
+- Tiny bundle size ~1kB
 - Support tools for custom GTM configuration
 - React.js is the only dependency
 - Logging events

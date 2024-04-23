@@ -4,9 +4,9 @@
 
 - Based on React hooks
 - Fully typed with TypeScript
-- Small bundle size <4k
+- Small bundle size <4kB
 - Support tools for custom GTM configuration
-- Zero dependencies
+- React.js is the only dependency
 - Logging events
 - Test covered
 
@@ -82,18 +82,16 @@ useEffect(() => {
 ### Track event
 
 ```typescript
-	const { eventGTM } = useGTM();
+const { eventGTM } = useGTM();
 
-	const handleSaveCustomerInfo = (customer) => {
-	  eventGTM("customer_info", {
-		customerId: customer.customerId,
-		customerRegion: customer.customerRegion
-	  });
-	}
+const handleSaveCustomerInfo = (customer) => {
+  eventGTM("customer_info", {
+    customerId: customer.customerId,
+    customerRegion: customer.customerRegion,
+  });
+};
 
-	...JSX...
-
-	<button onClick={handleSaveCustomerInfo}>Submit</button>
+return <button onClick={handleSaveCustomerInfo}>Submit</button>;
 ```
 
 ### Custom data layer name

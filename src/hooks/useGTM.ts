@@ -10,12 +10,12 @@ const useGTM = () => {
   const runGTM = useCallback(
     ({
       tagId,
-      dataLayerName,
-      domain,
-      environment,
       nonce,
+      domain,
       script,
       devMode,
+      environment,
+      dataLayerName,
     }: GTMConstructor) => {
       if (devMode) {
         devModeRef.current = true;
@@ -23,12 +23,12 @@ const useGTM = () => {
 
       createTags({
         tagId,
-        dataLayerName,
-        domain,
-        environment,
         nonce,
+        domain,
         script,
         devMode,
+        environment,
+        dataLayerName,
       });
 
       if (typeof dataLayerName === "string") {

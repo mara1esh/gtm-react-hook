@@ -6,7 +6,13 @@ A lightweight, fully typed React hook library for seamless Google Tag Manager (G
 
 ## 🎯 Features
 
-✅ Simple & intuitive React hooks✅ Fully typed with TypeScript✅ Tiny bundle size (~1kB)✅ Customizable GTM configuration✅ Zero external dependencies (only React 19)✅ Built-in event logging✅ Test coverage ensured
+✅ Simple & intuitive React hooks
+✅ Fully typed with TypeScript
+✅ Tiny bundle size (~1kB)
+✅ Customizable GTM configuration
+✅ Zero external dependencies (only React 19)
+✅ Built-in event logging
+✅ Test coverage ensured
 
 ---
 

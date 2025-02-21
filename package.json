@@ -1,6 +1,6 @@
 {
     "name": "gtm-react-hook",
-    "description": "Easy-to-use React hooks for Google Tag Management based on TypeScript",
+    "description": "Easy-to-use React hooks for Google Tag Manager",
     "version": "0.0.17",
     "scripts": {
         "start": "webpack serve --open",
@@ -10,7 +10,7 @@
         "test": "jest"
     },
     "dependencies": {
-        "react": "^18.2.0"
+        "react": "^19.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.23.7",
@@ -20,7 +20,7 @@
         "@changesets/cli": "^2.27.1",
         "@testing-library/react": "^14.1.2",
         "@types/jest": "^29.5.11",
-        "@types/react": "^18.2.48",
+        "@types/react": "^19.0.10",
         "@types/react-test-renderer": "^18.0.7",
         "@typescript-eslint/eslint-plugin": "^6.19.0",
         "@typescript-eslint/parser": "^6.19.0",

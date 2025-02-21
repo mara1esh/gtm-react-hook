@@ -1,5 +1,11 @@
 # gtm-react-hook
 
+## 1.0.1
+
+### Patch Changes
+
+- prettify readme
+
 ## 1.0.0
 
 ### Major Changes

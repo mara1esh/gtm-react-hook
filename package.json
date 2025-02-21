@@ -1,7 +1,7 @@
 {
     "name": "gtm-react-hook",
     "description": "Easy-to-use React hooks for Google Tag Manager",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "start": "webpack serve --open",
         "release": "pnpm run build && changeset publish",

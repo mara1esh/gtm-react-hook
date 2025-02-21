@@ -1,115 +1,126 @@
-# 📊 Easy-to-use React hooks for Google Tag Management based on TypeScript
+# 🚀 gtm-react-hook: Easy-to-use React hooks for Google Tag Manager
 
-## 🔥 Features
+A lightweight, fully typed React hook library for seamless Google Tag Manager (GTM) integration.
 
-- Based on React hooks
-- Fully typed with TypeScript
-- Tiny bundle size ~1kB
-- Support tools for custom GTM configuration
-- React.js is the only dependency
-- Logging events
-- Test covered
+---
 
-## 🛠 Install
+## 🎯 Features
 
-    npm install gtm-react-hook
-    or
-    yarn add gtm-react-hook
+✅ Simple & intuitive React hooks✅ Fully typed with TypeScript✅ Tiny bundle size (~1kB)✅ Customizable GTM configuration✅ Zero external dependencies (only React 19)✅ Built-in event logging✅ Test coverage ensured
 
-## 🚀 Quickstart
+---
 
-```typescript
-import React, { useEffect } from "react";
+## 📦 Installation
+
+```sh
+# Using npm
+npm install gtm-react-hook
+
+# Using yarn
+yarn add gtm-react-hook
+
+# Using pnpm
+pnpm install gtm-react-hook
+```
+
+---
+
+## ⚡ Quickstart
+
+```tsx
+import { useEffect } from "react";
 import { useGTM } from "gtm-react-hook";
 import { useLocation } from "react-router-dom";
 
 const App = () => {
   const { runGTM, eventGTM } = useGTM();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     runGTM({
-      tagId: "GTM-XXXXXXX", // Provide your Tag ID
+      tagId: "GTM-XXXXXXX", // Provide your GTM Tag ID
     });
   }, []);
 
   useEffect(() => {
-    eventGTM("page_view", {
-      pathname: location.pathname,
-    });
-  }, [location.pathname]);
+    eventGTM("page_view", { pathname });
+  }, [pathname]);
 
   return <>...</>;
 };
 ```
 
-## 🧙🏻‍♂️ API
+---
 
-### useGTM()
+## 🔍 API Reference
 
-```typescript
+### 🏗 `useGTM()`
+
+```tsx
 const { runGTM, eventGTM } = useGTM();
 ```
 
-#### runGTM({ tagId: string, dataLayerName?: object, environment?: { gtm_auth: string, gtm_preview: string }, domain?: string, script?: string, nonce?: string, devMode?: boolean })
+#### `runGTM({ tagId, dataLayerName, environment, domain, script, nonce, devMode })`
 
-1.  **tagId** (required) - your GTM measurement ID;
-2.  dataLayerName - custom name of dataLayer object;
-3.  environment - GTM environment params;
-4.  domain - custom GTM domain;
-5.  script - custom GTM script's name;
-6.  nonce;
-7.  devMode - add logging for GTM initialization & events;
+- **tagId** *(required)* – Your GTM measurement ID.
+- `dataLayerName` – Custom name for `dataLayer` object.
+- `environment` – GTM environment parameters (`gtm_auth`, `gtm_preview`).
+- `domain` – Custom GTM domain.
+- `script` – Custom GTM script name.
+- `nonce` – Security nonce.
+- `devMode` – Enables logging for GTM initialization & events.
 
-#### eventGTM(eventName: string, data?: object)
+#### `eventGTM(eventName: string, data?: object)`
 
-1.  **eventName** (required) - name of an event;
-2.  data - payload of dataLayer (action, url, customerID, etc);
+- **eventName** *(required)* – Name of the event.
+- `data` – Payload for the dataLayer (e.g., action, URL, customer ID, etc.).
 
-## 💅🏽 Examples
+---
 
-### Page tracking
+## 📖 Usage Examples
 
-```typescript
+### 📊 Page Tracking
+
+```tsx
 const { eventGTM } = useGTM();
-const location = useLocation();
+const { pathname } = useLocation();
 
 useEffect(() => {
-  eventGTM("page_view", { location: location.pathname });
-}, [location]);
+  eventGTM("page_view", { pathname });
+}, [pathname]);
 ```
 
-### Track event
+### 🎯 Track Custom Events
 
-```typescript
+```tsx
 const { eventGTM } = useGTM();
 
-const handleSaveCustomerInfo = (customer) => {
+const saveCustomerInfo = (customer) => {
   eventGTM("customer_info", {
     customerId: customer.customerId,
     customerRegion: customer.customerRegion,
   });
 };
 
-return <button onClick={handleSaveCustomerInfo}>Submit</button>;
+return <button onClick={saveCustomerInfo}>Submit</button>;
 ```
 
-### Custom data layer name
+### 🛠 Custom Data Layer Name
 
-```typescript
+```tsx
 const { runGTM } = useGTM();
 
 useEffect(() => {
   runGTM({
     gtmId: "GTM-XXXXXXX",
-    dataLayerName: "myGTMLayer", // all GTM events will be stored in `window.myGTMLayer` key
+    dataLayerName: "myGTMLayer", // Events stored in `window.myGTMLayer`
   });
 }, []);
 ```
 
-### Installation only after user has accepted analytics
+### 🔒 Install GTM Only After User Consent
 
-```typescript
+```tsx
 const { runGTM } = useGTM();
 
 useEffect(() => {
@@ -121,15 +132,31 @@ useEffect(() => {
 }, [isUserConfirmAnalytics]);
 ```
 
-### Logging
+### 🛠 Enable Debugging & Logging
 
-```typescript
+```tsx
 const { runGTM } = useGTM();
 
 useEffect(() => {
   runGTM({
     gtmId: "GTM-XXXXXXX",
-    devMode: true, // add GTM logs to browser's console
+    devMode: true, // Enables GTM logs in browser console
   });
 }, []);
 ```
+
+---
+
+## ❤️ Contributing
+
+We welcome contributions! Feel free to submit issues and PRs to make this library even better.
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### 🚀 Happy tracking with `gtm-react-hook`! 🎉
